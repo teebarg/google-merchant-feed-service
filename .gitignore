@@ -1,0 +1,90 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# =========================
+# uv
+# =========================
+# uv.lock SHOULD be committed
+# do not ignore uv.lock
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Google credentials
+# =========================
+service_account.json
+*.json.key
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# Test artifacts
+# =========================
+.pytest_cache/
+.coverage
+htmlcov/
+
+# =========================
+# Ruff / Lint
+# =========================
+.ruff_cache/
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# =========================
+# Docker
+# =========================
+docker-compose.override.yml
+
+# =========================
+# Build artifacts
+# =========================
+dist/
+build/
+*.egg-info/
+
+# =========================
+# Node (if present)
+# =========================
+node_modules/
+
+# =========================
+# Secrets / local data
+# =========================
+*.pem
+*.key
+*.crt
+*.sqlite3
+
+# =========================
+# Temporary files
+# =========================
+tmp/
+temp/

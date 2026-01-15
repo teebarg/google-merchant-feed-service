@@ -1,0 +1,71 @@
+# =========================
+# Python / uv
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+.venv/
+venv/
+env/
+
+# uv caches (not needed in container)
+.uv/
+.uv-cache/
+
+# =========================
+# Environment / secrets
+# =========================
+.env
+.env.*
+service_account.json
+*.json.key
+*.pem
+*.key
+*.crt
+
+# =========================
+# Tests & tooling
+# =========================
+tests/
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+
+# =========================
+# Git / CI
+# =========================
+.git/
+.gitignore
+.github/
+
+# =========================
+# Editor / OS
+# =========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# =========================
+# Build artifacts
+# =========================
+dist/
+build/
+*.egg-info/
+
+# =========================
+# Node (if present)
+# =========================
+node_modules/
+
+# =========================
+# Logs / temp
+# =========================
+*.log
+logs/
+tmp/
+temp/
