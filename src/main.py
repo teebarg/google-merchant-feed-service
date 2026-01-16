@@ -1,13 +1,14 @@
-from fastapi import FastAPI, HTTPException
-from src.sync import sync_products
-from src.scheduler import start_scheduler
-from dotenv import load_dotenv
-from contextlib import asynccontextmanager
-from fastapi import BackgroundTasks, HTTPException
-import uuid
 import time
+import uuid
+from contextlib import asynccontextmanager
+
+from dotenv import load_dotenv
+from fastapi import BackgroundTasks, FastAPI, HTTPException
+
 from src.jobs import JobStatus
-from src.locks import create_job, update_job, get_job
+from src.locks import create_job, get_job, update_job
+from src.scheduler import start_scheduler
+from src.sync import sync_products
 
 
 @asynccontextmanager
@@ -49,7 +50,7 @@ def run_sync_job(job_id: str):
         raise
 
 
-@app.get("/sync")
+@app.post("/sync")
 def start_sync(background_tasks: BackgroundTasks):
     job_id = str(uuid.uuid4())
 

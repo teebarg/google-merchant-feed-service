@@ -1,6 +1,8 @@
 import os
+
 import psycopg2
 from psycopg2.extras import RealDictCursor
+
 
 def fetch_products():
     """
@@ -52,7 +54,7 @@ def fetch_products():
             "description": row["description"] or "",
             "availability": "in_stock",
             "link": f"https://www.revoque.com.ng/products/{row['sku']}",
-            "image link": row["image_url"] or "",
+            "image link": row["image_url"] or "https://www.revoque.com.ng/placeholder.jpg",
             "price": float(row["price"]) if row["price"] else 0.0,
             "condition": "new" if row["is_new"] else "used",
             "color": row["color"] or "",
@@ -62,4 +64,3 @@ def fetch_products():
         })
 
     return products
-

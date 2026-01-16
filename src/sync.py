@@ -1,13 +1,12 @@
 from src.db import fetch_products
-from src.sheets import get_sheet, get_existing_rows
 from src.locks import acquire_lock, release_lock
-
+from src.sheets import get_existing_rows, get_sheet
 
 EXPECTED_HEADERS = [
     "id", "title", "description", "availability", "link", "image link", "price",
     "identifier exists", "gtin", "mpn", "brand", "product highlight", "product detail", "additional image link",
     "condition", "adult", "color", "size", "gender", "material", "pattern", "age group", "multipack", "is bundle",
-    "unit pricing measure", "unit pricing base measure", "energy efficiency class", 
+    "unit pricing measure", "unit pricing base measure", "energy efficiency class",
     "min energy efficiency class", "max energy efficiency class", "item group id", "sell on google quantity"
 ]
 
@@ -31,7 +30,7 @@ def map_product_to_header(p, header):
         "description": p["description"],
         "availability": "in_stock",
         "link": p["link"],
-        "image link": p["image link"],
+        "image link": p["image link"] or "https://example.com/default.jpg",
         "price": f"{p['price']} NGN",
         "identifier exists": "no",
         "gtin": "",
@@ -91,6 +90,7 @@ def sync_products():
 
         for idx, row in to_update:
             sheet.update(
+                # [row],
                 f"A{idx}:{chr(64 + len(headers))}{idx}",
                 [row],
                 value_input_option="RAW",
