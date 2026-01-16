@@ -22,7 +22,6 @@ def fetch_products():
             v.color,
             v.size,
             v.age,
-            v.measurement,
             p.active AS is_active
         FROM products p
         LEFT JOIN LATERAL (
@@ -38,7 +37,6 @@ def fetch_products():
             LIMIT 1
         ) pi ON true
         WHERE p.active = TRUE
-        LIMIT 2
     """)
 
     rows = cur.fetchall()
@@ -46,7 +44,6 @@ def fetch_products():
     cur.close()
     conn.close()
 
-    # Optionally, convert to list of dicts for Google Sheets
     products = []
     for row in rows:
         products.append({
@@ -57,30 +54,10 @@ def fetch_products():
             "link": f"https://www.revoque.com.ng/products/{row['sku']}",
             "image link": row["image_url"] or "",
             "price": float(row["price"]) if row["price"] else 0.0,
-            "identifier exists": "no",
-            "gtin": "",
-            "mpn": "",
-            "brand": "Revoque",
-            "product highlight": "",
-            "product detail": "",
-            "additional image link": "",
-            "condition": "new" if row["is_new"] else "thrift",
-            "adult": "no",
+            "condition": "new" if row["is_new"] else "used",
             "color": row["color"] or "",
             "size": row["size"] or "",
-            "gender": "female",
-            "material": "100% Cotton",
-            "pattern": "",
             "age group": row["age"] or "",
-            "multipack": "",
-            "is bundle": "no",
-            "unit pricing measure": "",
-            "unit pricing base measure": "",
-            "energy efficiency class": "",
-            "min energy efficiency class": "",
-            "max energy efficiency class": "",
-            "item group id": "",
-            "sell on google quantity": "1",
             "is_active": row["is_active"]
         })
 

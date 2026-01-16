@@ -5,15 +5,10 @@ from src.locks import acquire_lock, release_lock
 
 EXPECTED_HEADERS = [
     "id", "title", "description", "availability", "link", "image link", "price",
-    "identifier exists", "gtin",
-    "mpn", "brand", "product highlight", "product detail", "additional image link",
-    "condition", "adult", "color", "size", "gender",
-    "material", "pattern", "age group", "multipack", "is bundle",
-    "unit pricing measure", "unit pricing base measure", 
-    "energy efficiency class", 
-    "min energy efficiency class", 
-    "max energy efficiency class",
-    "item group id", "sell on google quantity"
+    "identifier exists", "gtin", "mpn", "brand", "product highlight", "product detail", "additional image link",
+    "condition", "adult", "color", "size", "gender", "material", "pattern", "age group", "multipack", "is bundle",
+    "unit pricing measure", "unit pricing base measure", "energy efficiency class", 
+    "min energy efficiency class", "max energy efficiency class", "item group id", "sell on google quantity"
 ]
 
 def get_headers(sheet):
@@ -37,21 +32,21 @@ def map_product_to_header(p, header):
         "availability": "in_stock",
         "link": p["link"],
         "image link": p["image link"],
-        "price": p["price"],
-        "identifier exists": p["identifier exists"],
+        "price": f"{p['price']} NGN",
+        "identifier exists": "no",
         "gtin": "",
         "mpn": "",
-        "brand": p["brand"],
+        "brand": "Revoque",
         "product highlight": "",
         "product detail": "",
         "additional image link": "",
         "condition": p["condition"],
-        "adult": p["adult"],
+        "adult": "no",
         "color": p["color"] or "",
         "size": p["size"] or "",
-        "gender": p["gender"] or "",
-        "material": p["material"] or "",
-        "pattern": p["pattern"] or "",
+        "gender": "female",
+        "material": "100% Cotton",
+        "pattern": "",
         "age group": p["age group"] or "",
         "multipack": "1",
         "is bundle": "no",
