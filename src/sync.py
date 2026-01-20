@@ -30,7 +30,7 @@ def map_product_to_header(p, header):
         "description": p["description"],
         "availability": "in_stock",
         "link": p["link"],
-        "image link": p["image link"] or "https://example.com/default.jpg",
+        "image link": p["image link"],
         "price": f"{p['price']} NGN",
         "identifier exists": "no",
         "gtin": "",
